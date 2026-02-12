@@ -1,5 +1,5 @@
 def main():
-    print("Hello from rag-etl!")
+    print("Hello from threadwise!")
 
 
 if __name__ == "__main__":

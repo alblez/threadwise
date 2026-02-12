@@ -1,7 +1,7 @@
 [project]
-name = "rag-etl"
+name = "threadwise"
 version = "0.1.0"
-description = "Project-scoped RAG ingestion for Gmail, transcripts, and documents"
+description = "Project-scoped RAG ingestion for Gmail"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
