@@ -3,7 +3,12 @@
     "allow": [
       "Bash(uv sync:*)",
       "Bash(uv run pytest:*)",
-      "Bash(uv run:*)"
+      "Bash(uv run:*)",
+      "Bash(uv pip install:*)",
+      "Bash(uv tool list:*)",
+      "Bash(/Users/alberto/Code/threadwise/.venv/bin/mypy:*)",
+      "Bash(uv venv:*)",
+      "Bash(uv pip list:*)"
     ]
   }
 }

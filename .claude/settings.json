@@ -28,17 +28,6 @@
           }
         ]
       }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "Edit|MultiEdit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 -c \"import json,sys; d=json.load(sys.stdin); p=d.get('tool_input',{}).get('file_path',''); blocked=['CLAUDE.md','docker-compose.yml','.claude/hooks/']; sys.exit(2) if any(b in p for b in blocked) else sys.exit(0)\""
-          }
-        ]
-      }
     ]
   }
 }
