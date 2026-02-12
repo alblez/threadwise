@@ -23,3 +23,14 @@ dist/
 *.ipr
 out/
 .idea_modules/
+
+# Mac
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Environment
+.env
+.env.local
+
