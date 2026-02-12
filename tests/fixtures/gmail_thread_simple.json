@@ -1,0 +1,30 @@
+{
+  "id": "thread_simple_001",
+  "historyId": "12345",
+  "messages": [
+    {
+      "id": "msg_simple_001",
+      "threadId": "thread_simple_001",
+      "labelIds": ["INBOX", "UNREAD"],
+      "snippet": "Just wanted to follow up on the project proposal.",
+      "historyId": "12345",
+      "internalDate": "1700000000000",
+      "payload": {
+        "mimeType": "text/plain",
+        "headers": [
+          {"name": "From", "value": "Alice Smith <alice@example.com>"},
+          {"name": "To", "value": "Bob Jones <bob@example.com>"},
+          {"name": "Subject", "value": "Project Proposal Follow-up"},
+          {"name": "Date", "value": "Tue, 14 Nov 2023 14:13:20 +0000"},
+          {"name": "Message-ID", "value": "<msg001@example.com>"}
+        ],
+        "body": {
+          "size": 98,
+          "data": "SGkgQm9iLAoKSnVzdCB3YW50ZWQgdG8gZm9sbG93IHVwIG9uIHRoZSBwcm9qZWN0IHByb3Bvc2FsLiBMZXQgbWUga25vdyB5b3VyIHRob3VnaHRzLgoKQmVzdCwKQWxpY2U="
+        },
+        "parts": []
+      },
+      "sizeEstimate": 512
+    }
+  ]
+}

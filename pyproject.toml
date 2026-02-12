@@ -5,7 +5,10 @@ description = "Project-scoped RAG ingestion for Gmail"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "google-api-python-client>=2.100.0",
+    "google-auth>=2.23.0",
     "hatchling>=1.28.0",
+    "markdownify>=0.13",
     "pydantic>=2.0",
 ]
 

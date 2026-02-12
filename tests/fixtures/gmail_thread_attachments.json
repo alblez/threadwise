@@ -1,0 +1,109 @@
+{
+  "id": "thread_attach_001",
+  "historyId": "12360",
+  "messages": [
+    {
+      "id": "msg_attach_001",
+      "threadId": "thread_attach_001",
+      "labelIds": ["INBOX"],
+      "snippet": "Please find attached the Q4 report and the architecture diagram.",
+      "historyId": "12355",
+      "internalDate": "1700100000000",
+      "payload": {
+        "mimeType": "multipart/mixed",
+        "headers": [
+          {"name": "From", "value": "Alice Smith <alice@example.com>"},
+          {"name": "To", "value": "Bob Jones <bob@example.com>"},
+          {"name": "Subject", "value": "Q4 Report and Architecture Diagram"},
+          {"name": "Date", "value": "Wed, 15 Nov 2023 17:46:40 +0000"},
+          {"name": "Message-ID", "value": "<msg_attach001@example.com>"}
+        ],
+        "body": {
+          "size": 0
+        },
+        "parts": [
+          {
+            "mimeType": "multipart/alternative",
+            "body": {
+              "size": 0
+            },
+            "parts": [
+              {
+                "mimeType": "text/plain",
+                "headers": [
+                  {"name": "Content-Type", "value": "text/plain; charset=UTF-8"}
+                ],
+                "body": {
+                  "size": 95,
+                  "data": "SGkgVGVhbSwKClBsZWFzZSBmaW5kIGF0dGFjaGVkIHRoZSBRNCByZXBvcnQgYW5kIHRoZSBhcmNoaXRlY3R1cmUgZGlhZ3JhbS4KClJlZ2FyZHMsCkFsaWNl"
+                }
+              },
+              {
+                "mimeType": "text/html",
+                "headers": [
+                  {"name": "Content-Type", "value": "text/html; charset=UTF-8"}
+                ],
+                "body": {
+                  "size": 140,
+                  "data": "PGRpdj48cD5IaSBUZWFtLDwvcD48cD5QbGVhc2UgZmluZCBhdHRhY2hlZCB0aGUgUTQgcmVwb3J0IGFuZCB0aGUgYXJjaGl0ZWN0dXJlIGRpYWdyYW0uPC9wPjxwPlJlZ2FyZHMsPGJyPkFsaWNlPC9wPjwvZGl2Pg=="
+                }
+              }
+            ]
+          },
+          {
+            "partId": "1",
+            "mimeType": "application/pdf",
+            "filename": "Q4_Report.pdf",
+            "headers": [
+              {"name": "Content-Disposition", "value": "attachment; filename=\"Q4_Report.pdf\""},
+              {"name": "Content-Type", "value": "application/pdf; name=\"Q4_Report.pdf\""}
+            ],
+            "body": {
+              "attachmentId": "ANGjdJ8AAAA_attachment_1",
+              "size": 245760
+            }
+          },
+          {
+            "partId": "2",
+            "mimeType": "image/png",
+            "filename": "architecture_diagram.png",
+            "headers": [
+              {"name": "Content-Disposition", "value": "attachment; filename=\"architecture_diagram.png\""},
+              {"name": "Content-Type", "value": "image/png; name=\"architecture_diagram.png\""}
+            ],
+            "body": {
+              "attachmentId": "ANGjdJ8AAAA_attachment_2",
+              "size": 102400
+            }
+          }
+        ]
+      },
+      "sizeEstimate": 350000
+    },
+    {
+      "id": "msg_attach_002",
+      "threadId": "thread_attach_001",
+      "labelIds": ["INBOX"],
+      "snippet": "Thanks Alice, I will review these today.",
+      "historyId": "12360",
+      "internalDate": "1700110000000",
+      "payload": {
+        "mimeType": "text/plain",
+        "headers": [
+          {"name": "From", "value": "Bob Jones <bob@example.com>"},
+          {"name": "To", "value": "Alice Smith <alice@example.com>"},
+          {"name": "Subject", "value": "Re: Q4 Report and Architecture Diagram"},
+          {"name": "Date", "value": "Wed, 15 Nov 2023 20:33:20 +0000"},
+          {"name": "Message-ID", "value": "<msg_attach002@example.com>"},
+          {"name": "In-Reply-To", "value": "<msg_attach001@example.com>"}
+        ],
+        "body": {
+          "size": 48,
+          "data": "VGhhbmtzIEFsaWNlLCBJIHdpbGwgcmV2aWV3IHRoZXNlIHRvZGF5LgoKQm9i"
+        },
+        "parts": []
+      },
+      "sizeEstimate": 512
+    }
+  ]
+}

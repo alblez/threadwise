@@ -6,6 +6,8 @@ from threadwise.core.models import (
     ChunkMetadata,
     EmailMessage,
     EmailThread,
+    ProcessedMessage,
+    ProcessedThread,
 )
 from threadwise.core.protocols import EmbeddingProvider, LLMProvider
 
@@ -17,4 +19,6 @@ __all__ = [
     "EmailThread",
     "EmbeddingProvider",
     "LLMProvider",
+    "ProcessedMessage",
+    "ProcessedThread",
 ]

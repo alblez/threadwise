@@ -57,3 +57,25 @@ class EmailThread(BaseModel):
     thread_id: str
     messages: list[EmailMessage]
     subject: str | None = None
+
+
+class ProcessedMessage(BaseModel):
+    """An email message with cleaned markdown content."""
+
+    message_id: str
+    thread_id: str
+    sender: str
+    recipients: list[str]
+    date: datetime
+    subject: str | None = None
+    content: str
+    in_reply_to: str | None = None
+    attachments: list[AttachmentMetadata] = []
+
+
+class ProcessedThread(BaseModel):
+    """A thread of processed messages with cleaned content."""
+
+    thread_id: str
+    messages: list[ProcessedMessage]
+    subject: str | None = None

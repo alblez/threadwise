@@ -1,28 +1,36 @@
 # threadwise Roadmap
 
-## Current Milestone: M1 - Gmail Ingestion
+## Current Milestone: M3 - Smart Thread-Aware Chunking
 
 ### Status: Not Started
 
-### Goal
-Gmail client class wrapping google-api-python-client that fetches threads
-and returns structured EmailThread/EmailMessage objects.
+### Completed: M2 - Email Processing
 
-### Tasks
-- [ ] Gmail client class accepting caller-provided credentials
-- [ ] Fetch thread by ID, returning EmailThread
-- [ ] Fetch threads by label/query
-- [ ] Mock fixtures with realistic multi-message threads
-- [ ] Full test coverage against mocks
+- [x] ProcessedMessage and ProcessedThread models
+- [x] ProcessingConfig with signature/quoted text/tracking options
+- [x] EmailProcessor: HTML to markdown conversion (markdownify)
+- [x] Tracking pixel and invisible element removal
+- [x] Signature stripping (delimiter, salutation, "Sent from" patterns)
+- [x] Quoted reply handling (collapse/strip/keep)
+- [x] Whitespace normalization
+- [x] HTML email fixtures and 14 tests
+
+### Completed: M1 - Gmail Ingestion
+
+- [x] Gmail client class accepting caller-provided credentials
+- [x] Fetch thread by ID, returning EmailThread
+- [x] Fetch threads by label/query with pagination
+- [x] Mock fixtures with realistic multi-message threads
+- [x] Full test coverage against mocks (10 tests)
 
 ### Milestone Overview
 
 | Milestone | Description | Status |
-|-----------|-------------|--------|
+| ----------- | ------------- | -------- |
 | M0 | Re-foundation: rename, models, protocols | ✅ Complete |
-| M1 | Gmail ingestion with mock data | 🔲 Current |
-| M2 | Email processing (HTML to markdown, cleaning) | 🔲 Planned |
-| M3 | Smart thread-aware chunking | 🔲 Planned |
+| M1 | Gmail ingestion with mock data | ✅ Complete |
+| M2 | Email processing (HTML to markdown, cleaning) | ✅ Complete |
+| M3 | Smart thread-aware chunking | 🔲 Current |
 | M4 | Thread summarization (LLM + extractive fallback) | 🔲 Planned |
 | M5 | Embedding with batching and rate limiting | 🔲 Planned |
 | M6 | pgvector storage (schema, upsert, indexing) | 🔲 Planned |

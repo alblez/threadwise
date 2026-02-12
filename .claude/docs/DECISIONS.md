@@ -1,7 +1,7 @@
 # Architecture Decisions
 
 | Decision | Choice | Reasoning |
-|----------|--------|-----------|
+| ---------- | -------- | ----------- |
 | Retrieval strategy | Hierarchical (summary then detail) | Prevents thread noise from flooding LLM context |
 | Pipeline composability | Independent layers, shared via data models | Each layer accepts and returns Pydantic models |
 | Provider defaults | None (require explicit config) | Avoids coupling to any single AI provider |

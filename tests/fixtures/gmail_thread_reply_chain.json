@@ -1,0 +1,142 @@
+{
+  "id": "thread_reply_001",
+  "historyId": "12350",
+  "messages": [
+    {
+      "id": "msg_reply_001",
+      "threadId": "thread_reply_001",
+      "labelIds": ["INBOX"],
+      "snippet": "Thanks for following up.",
+      "historyId": "12346",
+      "internalDate": "1700000000000",
+      "payload": {
+        "mimeType": "multipart/alternative",
+        "headers": [
+          {"name": "From", "value": "Bob Jones <bob@example.com>"},
+          {"name": "To", "value": "Alice Smith <alice@example.com>"},
+          {"name": "Subject", "value": "Re: Project Proposal Follow-up"},
+          {"name": "Date", "value": "Tue, 14 Nov 2023 15:00:00 +0000"},
+          {"name": "Message-ID", "value": "<msg_reply001@example.com>"},
+          {"name": "In-Reply-To", "value": "<msg001@example.com>"}
+        ],
+        "body": {
+          "size": 0
+        },
+        "parts": [
+          {
+            "mimeType": "text/plain",
+            "headers": [
+              {"name": "Content-Type", "value": "text/plain; charset=UTF-8"}
+            ],
+            "body": {
+              "size": 120,
+              "data": "SGkgQWxpY2UsCgpUaGFua3MgZm9yIGZvbGxvd2luZyB1cC4gSSByZXZpZXdlZCB0aGUgcHJvcG9zYWwgYW5kIGl0IGxvb2tzIGdyZWF0LiBJIGhhdmUgYSBmZXcgbWlub3Igc3VnZ2VzdGlvbnMuCgpCZXN0LApCb2I="
+            }
+          },
+          {
+            "mimeType": "text/html",
+            "headers": [
+              {"name": "Content-Type", "value": "text/html; charset=UTF-8"}
+            ],
+            "body": {
+              "size": 160,
+              "data": "PGRpdj48cD5IaSBBbGljZSw8L3A-PHA-VGhhbmtzIGZvciBmb2xsb3dpbmcgdXAuIEkgcmV2aWV3ZWQgdGhlIHByb3Bvc2FsIGFuZCBpdCBsb29rcyBncmVhdC4gSSBoYXZlIGEgZmV3IG1pbm9yIHN1Z2dlc3Rpb25zLjwvcD48cD5CZXN0LDxicj5Cb2I8L3A-PC9kaXY-"
+            }
+          }
+        ]
+      },
+      "sizeEstimate": 1024
+    },
+    {
+      "id": "msg_reply_002",
+      "threadId": "thread_reply_001",
+      "labelIds": ["INBOX"],
+      "snippet": "Great feedback!",
+      "historyId": "12348",
+      "internalDate": "1700010000000",
+      "payload": {
+        "mimeType": "multipart/alternative",
+        "headers": [
+          {"name": "From", "value": "Alice Smith <alice@example.com>"},
+          {"name": "To", "value": "Bob Jones <bob@example.com>"},
+          {"name": "Cc", "value": "Carol White <carol@example.com>"},
+          {"name": "Subject", "value": "Re: Project Proposal Follow-up"},
+          {"name": "Date", "value": "Tue, 14 Nov 2023 17:46:40 +0000"},
+          {"name": "Message-ID", "value": "<msg_reply002@example.com>"},
+          {"name": "In-Reply-To", "value": "<msg_reply001@example.com>"}
+        ],
+        "body": {
+          "size": 0
+        },
+        "parts": [
+          {
+            "mimeType": "text/plain",
+            "headers": [
+              {"name": "Content-Type", "value": "text/plain; charset=UTF-8"}
+            ],
+            "body": {
+              "size": 130,
+              "data": "SGkgQm9iIGFuZCBDYXJvbCwKCkdyZWF0IGZlZWRiYWNrISBJIHdpbGwgaW5jb3Jwb3JhdGUgdGhlIGNoYW5nZXMgYW5kIHNlbmQgYSByZXZpc2VkIHZlcnNpb24gYnkgRnJpZGF5LgoKQmVzdCwKQWxpY2U="
+            }
+          },
+          {
+            "mimeType": "text/html",
+            "headers": [
+              {"name": "Content-Type", "value": "text/html; charset=UTF-8"}
+            ],
+            "body": {
+              "size": 170,
+              "data": "PGRpdj48cD5IaSBCb2IgYW5kIENhcm9sLDwvcD48cD5HcmVhdCBmZWVkYmFjayEgSSB3aWxsIGluY29ycG9yYXRlIHRoZSBjaGFuZ2VzIGFuZCBzZW5kIGEgcmV2aXNlZCB2ZXJzaW9uIGJ5IEZyaWRheS48L3A-PHA-QmVzdCw8YnI-QWxpY2U8L3A-PC9kaXY-"
+            }
+          }
+        ]
+      },
+      "sizeEstimate": 1024
+    },
+    {
+      "id": "msg_reply_003",
+      "threadId": "thread_reply_001",
+      "labelIds": ["INBOX"],
+      "snippet": "Sounds good Alice.",
+      "historyId": "12350",
+      "internalDate": "1700020000000",
+      "payload": {
+        "mimeType": "multipart/alternative",
+        "headers": [
+          {"name": "From", "value": "Bob Jones <bob@example.com>"},
+          {"name": "To", "value": "Alice Smith <alice@example.com>"},
+          {"name": "Subject", "value": "Re: Project Proposal Follow-up"},
+          {"name": "Date", "value": "Tue, 14 Nov 2023 20:33:20 +0000"},
+          {"name": "Message-ID", "value": "<msg_reply003@example.com>"},
+          {"name": "In-Reply-To", "value": "<msg_reply002@example.com>"}
+        ],
+        "body": {
+          "size": 0
+        },
+        "parts": [
+          {
+            "mimeType": "text/plain",
+            "headers": [
+              {"name": "Content-Type", "value": "text/plain; charset=UTF-8"}
+            ],
+            "body": {
+              "size": 60,
+              "data": "U291bmRzIGdvb2QgQWxpY2UuIExvb2tpbmcgZm9yd2FyZCB0byB0aGUgcmV2aXNlZCB2ZXJzaW9uLgoKQm9i"
+            }
+          },
+          {
+            "mimeType": "text/html",
+            "headers": [
+              {"name": "Content-Type", "value": "text/html; charset=UTF-8"}
+            ],
+            "body": {
+              "size": 100,
+              "data": "PGRpdj48cD5Tb3VuZHMgZ29vZCBBbGljZS4gTG9va2luZyBmb3J3YXJkIHRvIHRoZSByZXZpc2VkIHZlcnNpb24uPC9wPjxwPkJvYjwvcD48L2Rpdj4="
+            }
+          }
+        ]
+      },
+      "sizeEstimate": 768
+    }
+  ]
+}
