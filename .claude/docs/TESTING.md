@@ -15,8 +15,17 @@
 
 ## Running Tests
 
+Use the `/run-tests` command (runs in a sub-agent to save tokens):
+
+- `/run-tests` - all tests except storage
+- `/run-tests -m storage` - storage tests (requires: docker compose up -d)
+- `/run-tests tests/test_models.py` - single module
+- `/run-tests -k "thread"` - keyword filter
+
+Raw pytest commands (for human use outside Claude Code):
+
 - `uv run pytest` - all tests except storage
-- `uv run pytest -m storage` - storage tests (requires: docker compose up -d)
+- `uv run pytest -m storage` - storage tests
 - `uv run pytest tests/test_models.py -v` - verbose single module
 - `uv run pytest -k "thread"` - keyword filter
 

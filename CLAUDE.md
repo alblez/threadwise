@@ -3,12 +3,12 @@
 Thread-aware email ingestion library for RAG systems. Python 3.12, uv, pgvector.
 
 ## Quick Reference
-- `uv run pytest` - run tests
-- `uv run pytest tests/test_models.py::test_chunk_instantiation` - run single test
-- `uv run pytest tests/ -m storage` - storage tests (requires docker compose up)
+- `/run-tests` - run all tests (sub-agent, token-efficient)
+- `/run-tests tests/test_models.py::test_chunk_instantiation` - single test
+- `/run-tests -m storage` - storage tests (requires docker compose up)
 - `uv run ruff check .` - lint
 - `uv run mypy src` - type check
-- `uv run ruff check . && uv run mypy src && uv run pytest` - full verification
+- `uv run ruff check . && uv run mypy src` - lint + type check
 
 ## Project Structure
 - `src/threadwise/` - library source
@@ -39,5 +39,5 @@ in README. Implementation progresses milestone by milestone.
 - Storage is pgvector only. No storage abstraction layer.
 - Gmail only. No generic email abstraction.
 - All external provider calls must go through the Protocol interfaces.
-- Run full verification (ruff + mypy + pytest) after completing any task.
+- Run `uv run ruff check .` and `uv run mypy src` for lint/type checks, then `/run-tests` for tests. Never run pytest directly.
 - Do not commit or push. User handles git operations.
