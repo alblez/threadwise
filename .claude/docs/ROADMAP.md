@@ -1,8 +1,17 @@
 # threadwise Roadmap
 
-## Current Milestone: M3 - Smart Thread-Aware Chunking
+## Current Milestone: M4 - Thread Summarization
 
 ### Status: Not Started
+
+### Completed: M3 - Smart Thread-Aware Chunking
+
+- [x] ChunkingConfig model (chunk_size, chunk_overlap, tokenizer, preserve_message_boundaries)
+- [x] ThreadChunker class with message-boundary-aware splitting
+- [x] Oversized message handling (paragraph → sentence → token boundary splits)
+- [x] Thread context generation for later chunks
+- [x] tiktoken-based token counting
+- [x] 12 tests covering all chunking scenarios
 
 ### Completed: M2 - Email Processing
 
@@ -30,8 +39,8 @@
 | M0 | Re-foundation: rename, models, protocols | ✅ Complete |
 | M1 | Gmail ingestion with mock data | ✅ Complete |
 | M2 | Email processing (HTML to markdown, cleaning) | ✅ Complete |
-| M3 | Smart thread-aware chunking | 🔲 Current |
-| M4 | Thread summarization (LLM + extractive fallback) | 🔲 Planned |
+| M3 | Smart thread-aware chunking | ✅ Complete |
+| M4 | Thread summarization (LLM + extractive fallback) | 🔲 Current |
 | M5 | Embedding with batching and rate limiting | 🔲 Planned |
 | M6 | pgvector storage (schema, upsert, indexing) | 🔲 Planned |
 | M7 | Hierarchical retrieval engine | 🔲 Planned |

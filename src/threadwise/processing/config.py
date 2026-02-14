@@ -21,3 +21,12 @@ class ProcessingConfig(BaseModel):
     strip_signatures: bool = True
     quoted_text: Literal["collapse", "strip", "keep"] = "collapse"
     tracking_patterns: list[str] = list(DEFAULT_TRACKING_PATTERNS)
+
+
+class ChunkingConfig(BaseModel):
+    """Configuration for thread chunking."""
+
+    chunk_size: int = 512
+    chunk_overlap: int = 50
+    tokenizer: str = "cl100k_base"
+    preserve_message_boundaries: bool = True

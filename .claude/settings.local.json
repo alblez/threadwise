@@ -13,8 +13,7 @@
       "WebFetch(domain:developers.google.com)",
       "WebFetch(domain:www.sigparser.com)",
       "WebFetch(domain:github.com)",
-      "Bash(python3:*)",
-      "mcp__claude_ai_context7__resolve-library-id"
+      "Bash(python3:*)"
     ]
   }
 }

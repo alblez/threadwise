@@ -163,11 +163,11 @@ Everything else inherits defaults.
 
 | Milestone | Description | Status |
 | ----------- | ------------- | -------- |
-| M0 | Re-foundation: rename, README, models, provider protocols | 🔲 Planned |
-| M1 | Gmail ingestion with mock data | 🔲 Planned |
-| M2 | Email processing (HTML→markdown, signature stripping, cleaning) | 🔲 Planned |
-| M3 | Smart thread-aware chunking | 🔲 Planned |
-| M4 | Thread summarization (LLM + extractive fallback) | 🔲 Planned |
+| M0 | Re-foundation: rename, README, models, provider protocols | ✅ Complete |
+| M1 | Gmail ingestion with mock data | ✅ Complete |
+| M2 | Email processing (HTML→markdown, signature stripping, cleaning) | ✅ Complete |
+| M3 | Smart thread-aware chunking | ✅ Complete |
+| M4 | Thread summarization (LLM + extractive fallback) | 🔲 Current |
 | M5 | Embedding with batching and rate limiting | 🔲 Planned |
 | M6 | pgvector storage (schema, upsert, indexing) | 🔲 Planned |
 | M7 | Hierarchical retrieval engine | 🔲 Planned |
