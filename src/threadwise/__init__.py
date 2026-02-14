@@ -12,7 +12,14 @@ from threadwise.core import (
     ProcessedThread,
 )
 from threadwise.gmail import GmailClient
-from threadwise.processing import ChunkingConfig, EmailProcessor, ProcessingConfig, ThreadChunker
+from threadwise.processing import (
+    ChunkingConfig,
+    EmailProcessor,
+    ProcessingConfig,
+    SummarizationConfig,
+    ThreadChunker,
+    ThreadSummarizer,
+)
 
 __version__ = "0.1.0"
 __all__ = [
@@ -29,6 +36,8 @@ __all__ = [
     "ProcessedMessage",
     "ProcessedThread",
     "ProcessingConfig",
+    "SummarizationConfig",
     "ThreadChunker",
+    "ThreadSummarizer",
     "__version__",
 ]
