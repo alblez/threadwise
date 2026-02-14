@@ -11,6 +11,7 @@ from threadwise.core import (
     ProcessedMessage,
     ProcessedThread,
 )
+from threadwise.embedding import Embedder, EmbeddingConfig, EmbeddingError
 from threadwise.gmail import GmailClient
 from threadwise.processing import (
     ChunkingConfig,
@@ -27,6 +28,9 @@ __all__ = [
     "Chunk",
     "ChunkMetadata",
     "ChunkingConfig",
+    "Embedder",
+    "EmbeddingConfig",
+    "EmbeddingError",
     "EmailMessage",
     "EmailProcessor",
     "EmailThread",
