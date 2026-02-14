@@ -10,6 +10,8 @@ from googleapiclient.discovery import build  # type: ignore[import-untyped]
 
 from threadwise.core.models import AttachmentMetadata, EmailMessage, EmailThread
 
+_GMAIL_MAX_PAGE_SIZE = 100
+
 
 def _get_header(headers: list[dict[str, str]], name: str) -> str | None:
     """Case-insensitive header lookup."""
@@ -164,6 +166,37 @@ class GmailClient:
         )
         return _parse_thread(raw)
 
+    def _build_list_request(
+        self,
+        query: str | None,
+        labels: list[str] | None,
+        max_results: int,
+        current_count: int,
+        page_token: str | None,
+    ) -> dict[str, Any]:
+        """Construct parameters for the threads.list API call."""
+        params: dict[str, Any] = {
+            "userId": "me",
+            "maxResults": min(max_results - current_count, _GMAIL_MAX_PAGE_SIZE),
+        }
+        if query:
+            params["q"] = query
+        if labels:
+            params["labelIds"] = labels
+        if page_token:
+            params["pageToken"] = page_token
+        return params
+
+    def _fetch_threads_from_summaries(
+        self,
+        summaries: list[dict[str, Any]],
+        threads_so_far: list[EmailThread],
+        max_results: int,
+    ) -> list[EmailThread]:
+        """Fetch full threads for each summary, limited by max_results."""
+        remaining = max_results - len(threads_so_far)
+        return [self.get_thread(s["id"]) for s in summaries[:remaining]]
+
     def list_threads(
         self,
         query: str | None = None,
@@ -175,29 +208,18 @@ class GmailClient:
         page_token: str | None = None
 
         while len(threads) < max_results:
-            request_kwargs: dict[str, Any] = {
-                "userId": "me",
-                "maxResults": min(max_results - len(threads), 100),
-            }
-            if query:
-                request_kwargs["q"] = query
-            if labels:
-                request_kwargs["labelIds"] = labels
-            if page_token:
-                request_kwargs["pageToken"] = page_token
-
+            params = self._build_list_request(
+                query, labels, max_results, len(threads), page_token
+            )
             response: dict[str, Any] = (
-                self._service.users().threads().list(**request_kwargs).execute()
+                self._service.users().threads().list(**params).execute()
             )
 
-            thread_summaries: list[dict[str, Any]] = response.get("threads", [])
-            if not thread_summaries:
+            summaries = response.get("threads", [])
+            if not summaries:
                 break
 
-            for summary in thread_summaries:
-                if len(threads) >= max_results:
-                    break
-                threads.append(self.get_thread(summary["id"]))
+            threads.extend(self._fetch_threads_from_summaries(summaries, threads, max_results))
 
             page_token = response.get("nextPageToken")
             if not page_token:

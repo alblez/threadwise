@@ -14,6 +14,8 @@ class ThreadChunker:
     def __init__(self, config: ChunkingConfig | None = None) -> None:
         self._config = config or ChunkingConfig()
         self._encoder = tiktoken.get_encoding(self._config.tokenizer)
+        self._separator = "\n\n"
+        self._separator_tokens = self._count_tokens(self._separator)
 
     def chunk_thread(self, thread: ProcessedThread, project_id: str) -> list[Chunk]:
         """Split a processed thread into chunks."""
@@ -26,82 +28,112 @@ class ThreadChunker:
 
         # Single chunk path
         if total_tokens <= self._config.chunk_size:
-            text = "\n\n".join(formatted)
-            return [
-                self._build_chunk(
-                    thread, project_id, 0, text, thread.messages[0], thread_context=None
-                )
-            ]
+            return [self._create_single_chunk(thread, project_id, formatted)]
 
-        # Multi-chunk: walk messages and split
+        return self._create_multi_chunks(thread, project_id, formatted, token_counts)
+
+    def _create_single_chunk(
+        self, thread: ProcessedThread, project_id: str, formatted: list[str]
+    ) -> Chunk:
+        text = self._separator.join(formatted)
+        return self._build_chunk(
+            thread, project_id, 0, text, thread.messages[0], thread_context=None
+        )
+
+    def _create_multi_chunks(
+        self,
+        thread: ProcessedThread,
+        project_id: str,
+        formatted: list[str],
+        token_counts: list[int],
+    ) -> list[Chunk]:
         chunks: list[Chunk] = []
         current_texts: list[str] = []
         current_tokens = 0
         current_first_msg_idx = 0
 
         for i, (fmt, tcount) in enumerate(zip(formatted, token_counts, strict=True)):
-            fits = current_tokens + tcount + (2 if current_texts else 0) <= self._config.chunk_size
-
-            if fits:
+            sep_cost = self._separator_tokens if current_texts else 0
+            if current_tokens + tcount + sep_cost <= self._config.chunk_size:
                 current_texts.append(fmt)
-                current_tokens += tcount + (2 if len(current_texts) > 1 else 0)
-            else:
-                # Finalize current chunk if non-empty
-                if current_texts:
-                    text = "\n\n".join(current_texts)
-                    context = self._build_thread_context(
-                        thread.messages[:current_first_msg_idx]
-                    )
-                    chunks.append(
-                        self._build_chunk(
-                            thread,
-                            project_id,
-                            len(chunks),
-                            text,
-                            thread.messages[current_first_msg_idx],
-                            thread_context=context,
-                        )
-                    )
+                current_tokens += tcount + sep_cost
+                continue
 
-                # Handle oversized single message
-                if tcount > self._config.chunk_size:
-                    sub_texts = self._split_oversized_text(fmt)
-                    context = self._build_thread_context(thread.messages[:i])
-                    for j, sub in enumerate(sub_texts):
-                        chunks.append(
-                            self._build_chunk(
-                                thread,
-                                project_id,
-                                len(chunks),
-                                sub,
-                                thread.messages[i],
-                                thread_context=context if (j == 0 or chunks) else None,
-                            )
-                        )
-                    current_texts = []
-                    current_tokens = 0
-                    current_first_msg_idx = i + 1
-                else:
-                    current_texts = [fmt]
-                    current_tokens = tcount
-                    current_first_msg_idx = i
+            # Finalize current chunk if non-empty
+            if current_texts:
+                self._finalize_chunk(
+                    chunks,
+                    current_texts,
+                    thread,
+                    project_id,
+                    current_first_msg_idx,
+                )
+
+            # Handle oversized single message
+            if tcount > self._config.chunk_size:
+                self._handle_oversized_message(chunks, thread, project_id, fmt, i)
+                current_texts = []
+                current_tokens = 0
+                current_first_msg_idx = i + 1
+            else:
+                current_texts = [fmt]
+                current_tokens = tcount
+                current_first_msg_idx = i
 
         # Finalize remaining
         if current_texts:
-            text = "\n\n".join(current_texts)
-            context = self._build_thread_context(thread.messages[:current_first_msg_idx])
+            self._finalize_chunk(
+                chunks,
+                current_texts,
+                thread,
+                project_id,
+                current_first_msg_idx,
+            )
+
+        return chunks
+
+    def _finalize_chunk(
+        self,
+        chunks: list[Chunk],
+        current_texts: list[str],
+        thread: ProcessedThread,
+        project_id: str,
+        first_msg_idx: int,
+    ) -> None:
+        text = self._separator.join(current_texts)
+        context = self._build_thread_context(thread.messages[:first_msg_idx])
+        chunks.append(
+            self._build_chunk(
+                thread,
+                project_id,
+                len(chunks),
+                text,
+                thread.messages[first_msg_idx],
+                thread_context=context,
+            )
+        )
+
+    def _handle_oversized_message(
+        self,
+        chunks: list[Chunk],
+        thread: ProcessedThread,
+        project_id: str,
+        fmt: str,
+        msg_idx: int,
+    ) -> None:
+        sub_texts = self._split_oversized_text(fmt)
+        context = self._build_thread_context(thread.messages[:msg_idx])
+        for sub in sub_texts:
             chunks.append(
                 self._build_chunk(
                     thread,
                     project_id,
                     len(chunks),
-                    text,
-                    thread.messages[current_first_msg_idx],
+                    sub,
+                    thread.messages[msg_idx],
                     thread_context=context,
                 )
             )
-
-        return chunks
 
     def _count_tokens(self, text: str) -> int:
         return len(self._encoder.encode(text))
