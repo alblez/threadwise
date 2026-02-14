@@ -45,5 +45,5 @@ in README. Implementation progresses milestone by milestone.
 - Storage is pgvector only. No storage abstraction layer.
 - Gmail only. No generic email abstraction.
 - All external provider calls must go through the Protocol interfaces.
-- Run `uv run ruff check .` and `uv run mypy src` for lint/type checks, then `/run-tests` for tests. Never run pytest directly. The `/run-tests` command runs in a forked sub-agent context that keeps test output out of the main conversation, reducing token consumption. Always invoke it as a slash command, never as a skill.
+- Run `uv run ruff check .` and `uv run mypy src` for lint/type checks, then `/run-tests` for tests. Never run pytest directly. The `/run-tests` command runs in a forked sub-agent context that keeps test output out of the main conversation, reducing token consumption.
 - Do not commit or push. User handles git operations.
