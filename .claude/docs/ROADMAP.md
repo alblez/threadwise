@@ -4,6 +4,16 @@
 
 ### Status: Not Started
 
+### Completed: M5.5 - Docker Infrastructure + Database Test Fixtures
+
+- [x] `docker-compose.yml` with PostgreSQL 18.2 + pgvector 0.8.1
+- [x] Init script enabling vector extension
+- [x] `tests/conftest_db.py` with session/function-scoped DB fixtures
+- [x] Transaction rollback isolation strategy
+- [x] 4 smoke tests validating pgvector operations
+- [x] `psycopg[binary]` (v3) dependency added
+- [x] `@pytest.mark.db` marker for database tests
+
 ### Completed: M5 - Embedding Layer
 
 - [x] New `src/threadwise/embedding/` package
@@ -60,6 +70,7 @@
 | M3 | Smart thread-aware chunking | ✅ Complete |
 | M4 | Thread summarization (LLM + extractive fallback) | ✅ Complete |
 | M5 | Embedding with batching and rate limiting | ✅ Complete |
+| M5.5 | Docker infrastructure + database test fixtures | ✅ Complete |
 | M6 | pgvector storage (schema, upsert, indexing) | 🔲 Current |
 | M7 | Hierarchical retrieval engine | 🔲 Planned |
 | M8 | Pipeline orchestrator and Settings | 🔲 Planned |

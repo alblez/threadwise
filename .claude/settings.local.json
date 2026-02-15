@@ -14,7 +14,9 @@
       "WebFetch(domain:www.sigparser.com)",
       "WebFetch(domain:github.com)",
       "Bash(python3:*)",
-      "Skill(run-tests)"
+      "Skill(run-tests)",
+      "Bash(open:*)",
+      "Bash(docker info:*)"
     ]
   }
 }

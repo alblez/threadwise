@@ -1,0 +1,22 @@
+# threadwise development database
+# PostgreSQL 18.2 + pgvector 0.8.1
+services:
+  db:
+    image: pgvector/pgvector:0.8.1-pg18
+    environment:
+      POSTGRES_USER: threadwise
+      POSTGRES_PASSWORD: threadwise
+      POSTGRES_DB: threadwise
+    ports:
+      - "5433:5432"
+    volumes:
+      - threadwise_pgdata:/var/lib/postgresql
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U threadwise -d threadwise"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  threadwise_pgdata:

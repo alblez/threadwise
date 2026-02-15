@@ -169,6 +169,7 @@ Everything else inherits defaults.
 | M3 | Smart thread-aware chunking | ✅ Complete |
 | M4 | Thread summarization (LLM + extractive fallback) | ✅ Complete |
 | M5 | Embedding with batching and rate limiting | ✅ Complete |
+| M5.5 | Docker infrastructure + database test fixtures | ✅ Complete |
 | M6 | pgvector storage (schema, upsert, indexing) | 🔲 Current |
 | M7 | Hierarchical retrieval engine | 🔲 Planned |
 | M8 | Pipeline orchestrator and Settings | 🔲 Planned |
@@ -203,15 +204,18 @@ uv run ruff check .
 uv run mypy src
 ```
 
-### Running Storage Tests
+### Database Tests
 
-Storage tests (M6+) require PostgreSQL with pgvector. Use Docker Compose:
+Storage and database tests (M6+) require PostgreSQL 18.2 with pgvector 0.8.1. Start the development database with Docker Compose:
 
 ```bash
-docker compose up -d
-uv run pytest tests/ -m storage
-docker compose down
+docker compose up -d          # Start PostgreSQL + pgvector
+uv run pytest -m db           # Run database tests only
+uv run pytest -m "not db"     # Run all tests except database
+docker compose down            # Stop the database
 ```
+
+Database tests auto-skip when Docker is not running, so `uv run pytest` always works.
 
 ## Design Decisions
 

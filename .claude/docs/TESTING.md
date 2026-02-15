@@ -37,6 +37,50 @@ Place JSON files in tests/fixtures/. Name them descriptively:
 - gmail_thread_reply_chain.json - 3+ message reply chain with HTML
 - gmail_thread_attachments.json - thread with attachment metadata
 
-## Docker Compose (M6+)
+## Database Tests
 
-docker-compose.yml provides PostgreSQL 16 with pgvector extension on port 5433 (non-default to avoid conflicts).
+Database tests require PostgreSQL 18.2 + pgvector 0.8.1 running via Docker.
+
+### Starting the database
+
+```bash
+docker compose up -d
+```
+
+Wait for the healthcheck to pass (container reports "healthy").
+
+### Running tests
+
+```bash
+# All tests (DB tests auto-skip if Docker is down)
+uv run pytest
+
+# Only non-DB tests
+uv run pytest -m "not db"
+
+# Only DB tests
+uv run pytest -m db
+
+# Smoke tests specifically
+uv run pytest tests/test_docker_smoke.py -v
+```
+
+### Test isolation strategy
+
+- **Default: transaction rollback.** Each test gets a `db_connection` fixture that rolls back on teardown. Tests never commit, so they leave no side effects.
+- **Alternative: table truncation.** For tests that must commit (e.g., testing auto-commit behavior), use the `db_clean_tables` fixture which truncates all test tables before each test.
+
+### Fixtures (in tests/conftest_db.py)
+
+| Fixture | Scope | Purpose |
+| ------- | ----- | ------- |
+| `db_connection_string` | session | DSN string; skips session if DB unreachable |
+| `db_connection` | function | Connection with rollback-on-teardown |
+| `db_setup_tables` | session | Creates/drops test tables |
+| `db_clean_tables` | function | Truncates test tables before each test |
+
+### Stopping the database
+
+```bash
+docker compose down
+```
