@@ -1,8 +1,26 @@
 # threadwise Roadmap
 
-## Current Milestone: M4 - Thread Summarization
+## Current Milestone: M6 - pgvector Storage
 
 ### Status: Not Started
+
+### Completed: M5 - Embedding Layer
+
+- [x] New `src/threadwise/embedding/` package
+- [x] `EmbeddingConfig` model with provider, model, dimensions, and retry settings
+- [x] `Embedder` class with `embed_texts()` and `embed_chunks()` supporting batching
+- [x] Exponential backoff with jitter for rate-limit errors
+- [x] `EmbeddingError` with batch tracking
+- [x] 11 new tests covering batching and error handling
+
+### Completed: M4 - Thread Summarization
+
+- [x] `ThreadSummarizer` class generating single summary chunk per thread
+- [x] `SummarizationConfig` with LLM and extractive method support
+- [x] LLM-based summarization with token-aware truncation (cl100k_base)
+- [x] Extractive fallback (first/last paragraph heuristic)
+- [x] Summary chunk structure with specialized metadata (chunk_level="summary")
+- [x] 18 tests covering truncation and summarization methods
 
 ### Completed: M3 - Smart Thread-Aware Chunking
 
@@ -40,9 +58,9 @@
 | M1 | Gmail ingestion with mock data | ✅ Complete |
 | M2 | Email processing (HTML to markdown, cleaning) | ✅ Complete |
 | M3 | Smart thread-aware chunking | ✅ Complete |
-| M4 | Thread summarization (LLM + extractive fallback) | 🔲 Current |
-| M5 | Embedding with batching and rate limiting | 🔲 Planned |
-| M6 | pgvector storage (schema, upsert, indexing) | 🔲 Planned |
+| M4 | Thread summarization (LLM + extractive fallback) | ✅ Complete |
+| M5 | Embedding with batching and rate limiting | ✅ Complete |
+| M6 | pgvector storage (schema, upsert, indexing) | 🔲 Current |
 | M7 | Hierarchical retrieval engine | 🔲 Planned |
 | M8 | Pipeline orchestrator and Settings | 🔲 Planned |
 | M9 | Hardening (logging, retries, error handling) | 🔲 Planned |

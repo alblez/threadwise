@@ -167,9 +167,9 @@ Everything else inherits defaults.
 | M1 | Gmail ingestion with mock data | ✅ Complete |
 | M2 | Email processing (HTML→markdown, signature stripping, cleaning) | ✅ Complete |
 | M3 | Smart thread-aware chunking | ✅ Complete |
-| M4 | Thread summarization (LLM + extractive fallback) | 🔲 Current |
-| M5 | Embedding with batching and rate limiting | 🔲 Planned |
-| M6 | pgvector storage (schema, upsert, indexing) | 🔲 Planned |
+| M4 | Thread summarization (LLM + extractive fallback) | ✅ Complete |
+| M5 | Embedding with batching and rate limiting | ✅ Complete |
+| M6 | pgvector storage (schema, upsert, indexing) | 🔲 Current |
 | M7 | Hierarchical retrieval engine | 🔲 Planned |
 | M8 | Pipeline orchestrator and Settings | 🔲 Planned |
 | M9 | Hardening (logging, retries, error handling, progress) | 🔲 Planned |
